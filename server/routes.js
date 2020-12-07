@@ -38,16 +38,19 @@ router.patch('/', async (req, res) => {
   } else if (req.body.title === '' || req.body.content == '') {
     res.status(400).json({res: 'Must supply both title and content!'})
   } else {
-    const updateRequest = await Agile.findOneAndUpdate(req.query.id, req.body, {new:true, useFindAndModify:true})
-    res.json(updateRequest)
+    const updateRequest = await Agile.findOneAndUpdate({_id: req.query.id}, req.body, {new:true, useFindAndModify:false})
+    res.json({res: updateRequest})
   }
 })
 
 router.delete('/', async (req, res) => {
+  let exists = await Agile.exists({_id: req.query.id});
   if(!req.query.id || !req.query.id.match(/^[0-9a-fA-F]{24}$/)) {
     res.status(400).json({res: 'A MongoDB ID must be supplied!'})
+  } else if (!exists) {
+    res.status(400).json({res: 'Resource no longer exists.'})
   } else {
-    Agile.findOneAndDelete({_id: req.query.id})
+    await Agile.findOneAndRemove({_id: req.query.id}, {useFindAndModify: false})
     res.json({res: 'Resource deleted.'})
   }
 })
