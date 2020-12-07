@@ -24,3 +24,5 @@ pnpm-debug.log*
 
 .eslintrc.json
 .env
+
+yarn.lock
