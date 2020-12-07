@@ -13,6 +13,11 @@ export default {
     return {
       title: this.itemData
     }
+  },
+  methods: {
+    updateTitle (title) {
+      this.title = title;
+    }
   }
 }
 </script>
