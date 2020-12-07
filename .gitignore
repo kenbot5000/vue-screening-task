@@ -23,6 +23,5 @@ pnpm-debug.log*
 *.sw?
 
 .eslintrc.json
-.env
 
 yarn.lock
