@@ -1,21 +1,22 @@
 # vue-screening-task
 
+## Prerequisites
+A MongoDB installation.
+
 ## Project setup
 ```
-yarn install
-cd server
-npm install
+nps install_client
+nps install_server
 ```
 
 ### Compiles and hot-reloads for development
 Start API server
 ```
-cd server
-npm start
+nps start
 ```
 Start Vue project
 ```
-yarn serve
+nps serve
 ```
 
 ## How to fill up the database
